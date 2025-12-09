@@ -6,7 +6,7 @@ const Footer = () => {
 
   const socialLinks = [
     { icon: Linkedin, href: "https://linkedin.com/in/gthangella", label: "LinkedIn", color: "hover:bg-blue-600" },
-    { icon: Github, href: "https://github.com/gthangella", label: "GitHub", color: "hover:bg-gray-700" },
+    { icon: Github, href: "https://github.com", label: "GitHub", color: "hover:bg-gray-700" },
     { icon: Mail, href: "mailto:thangella17@gmail.com", label: "Email", color: "hover:bg-red-500" },
   ];
 
@@ -59,7 +59,7 @@ const Footer = () => {
               </motion.div>
               <div>
                 <span className="font-mono text-2xl font-bold">
-                  <span className="text-primary">G</span>Thangella
+                  <span className="text-primary"></span>Thangella
                 </span>
                 <p className="text-xs text-muted-foreground">DevOps | Cloud | AI</p>
               </div>

@@ -3,11 +3,7 @@ import { ArrowDown, Download, Linkedin, Github, Mail, ExternalLink, FileText } f
 import { Button } from "./ui/button";
 import Hero3DScene from "./Hero3DScene";
 
-interface HeroSectionProps {
-  onOpenResume: () => void;
-}
-
-const HeroSection = ({ onOpenResume }: HeroSectionProps) => {
+const HeroSection = () => {
   const roles = ["DevOps Engineer", "Data Analyst", "AI Prompt Engineer", "Cloud Architect"];
 
   return (
@@ -48,7 +44,8 @@ const HeroSection = ({ onOpenResume }: HeroSectionProps) => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <span className="text-primary">&gt;</span> <span className="text-muted-foreground">~/portfolio $</span>{" "}
+            <span className="text-primary">&gt;</span>{" "}
+            <span className="text-muted-foreground">~/portfolio $</span>{" "}
             <motion.span
               className="text-foreground"
               initial={{ opacity: 0 }}
@@ -59,27 +56,15 @@ const HeroSection = ({ onOpenResume }: HeroSectionProps) => {
             </motion.span>
           </motion.div>
 
-          {/* Name with glitch effect */}
+          {/* Name */}
           <motion.h1
             className="mb-4 text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <motion.span 
-              className="block text-foreground"
-              whileHover={{ scale: 1.02 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
-              Gadidamalla
-            </motion.span>
-            <motion.span 
-              className="gradient-text text-glow"
-              whileHover={{ scale: 1.02 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
-              Thangella
-            </motion.span>
+            <motion.span className="block text-foreground">Gadidamalla</motion.span>
+            <motion.span className="gradient-text text-glow">Thangella</motion.span>
           </motion.h1>
 
           {/* Animated Role */}
@@ -90,9 +75,7 @@ const HeroSection = ({ onOpenResume }: HeroSectionProps) => {
             transition={{ delay: 0.4 }}
           >
             <motion.div
-              animate={{
-                y: [0, -40, -80, -120, 0],
-              }}
+              animate={{ y: [0, -40, -80, -120, 0] }}
               transition={{
                 duration: 8,
                 repeat: Infinity,
@@ -105,13 +88,7 @@ const HeroSection = ({ onOpenResume }: HeroSectionProps) => {
                   key={index}
                   className="flex h-10 items-center justify-center font-mono text-xl text-primary sm:text-2xl"
                 >
-                  <motion.span
-                    initial={{ opacity: 0.5 }}
-                    animate={{ opacity: [0.5, 1, 0.5] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                  >
-                    {role}
-                  </motion.span>
+                  {role}
                 </div>
               ))}
             </motion.div>
@@ -125,46 +102,51 @@ const HeroSection = ({ onOpenResume }: HeroSectionProps) => {
             transition={{ duration: 0.6, delay: 0.5 }}
           >
             Computer Science graduate specializing in{" "}
-            <span className="font-medium text-primary">AWS Cloud & Devops</span>,{" "}
+            <span className="font-medium text-primary">AWS Cloud & DevOps</span>,{" "}
             <span className="font-medium text-primary">CI/CD Automation</span>,{" "}
             <span className="font-medium text-primary">Data Analytics</span>, and{" "}
             <span className="font-medium text-primary">AI-powered solutions</span>.
           </motion.p>
 
-          {/* CTA Buttons */}
+          {/* Buttons */}
           <motion.div
             className="mb-12 flex flex-wrap justify-center gap-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
           >
+            {/* View Projects */}
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Button
                 variant="hero"
                 size="lg"
-                onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}
+                onClick={() =>
+                  document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })
+                }
               >
                 View Projects
                 <ExternalLink className="h-4 w-4" />
               </Button>
             </motion.div>
+
+            {/* View Resume (PDF viewer) */}
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button
-                variant="heroOutline"
-                size="lg"
-                onClick={onOpenResume}
-              >
-                View Resume
-                <FileText className="h-4 w-4" />
+              <Button variant="heroOutline" size="lg" asChild>
+                <a
+                  href="/Thangella_DevOps_Resume-2025.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  View Resume
+                  <FileText className="h-4 w-4" />
+                </a>
               </Button>
             </motion.div>
+
+            {/* Download CV */}
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button
-                variant="glass"
-                size="lg"
-                asChild
-              >
-                <a href="https://drive.google.com/uc?export=download&id=1z6xKlz6VympQ6NlchXRD75xh13swQSJe" target="_blank" rel="noopener noreferrer">
+              <Button variant="glass" size="lg" asChild>
+                <a href="/Thangella_DevOps_Resume-2025.pdf" download>
                   Download CV
                   <Download className="h-4 w-4" />
                 </a>
@@ -187,8 +169,8 @@ const HeroSection = ({ onOpenResume }: HeroSectionProps) => {
               <motion.a
                 key={social.label}
                 href={social.href}
-                target={social.href.startsWith("http") ? "_blank" : undefined}
-                rel={social.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group flex h-12 w-12 items-center justify-center rounded-xl border border-border bg-card/50 backdrop-blur-sm transition-all hover:border-primary hover:bg-primary hover:shadow-lg hover:shadow-primary/25"
                 whileHover={{ scale: 1.1, rotate: 5 }}
                 whileTap={{ scale: 0.9 }}

@@ -16,7 +16,7 @@ const projects: ProjectDetails[] = [
     downloadLink: "https://drive.google.com/file/d/1z6xKlz6VympQ6NlchXRD75xh13swQSJe/view?usp=sharing",
     category: "AI Project",
     color: "from-violet-500 to-purple-600",
-    image: "https://images.unsplash.com/photo-1517842645767-c639042777db?w=800",
+    image: "/rewind-it.png",
     benefits: [
       "100% private & offline — all data stored locally",
       "Rich media memories including photos, voice notes, moods",
@@ -35,7 +35,7 @@ const projects: ProjectDetails[] = [
     demoLink: "https://invalser.vercel.app/",
     category: "Full Stack",
     color: "from-blue-500 to-cyan-500",
-    image: "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=800",
+    image: "/invalser.png",
     benefits: [
       "Covers 20+ cities across India",
       "500+ verified professionals",
@@ -53,7 +53,7 @@ const projects: ProjectDetails[] = [
     demoLink: "https://listeners.vercel.app/",
     category: "AI Project",
     color: "from-pink-500 to-rose-500",
-    image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=800",
+    image: "/listeners.png",
     benefits: [
       "AI chatbot with FAQ and smooth chat animations",
       "Search listeners by expertise, language, ratings",
@@ -71,7 +71,7 @@ const projects: ProjectDetails[] = [
     demoLink: "https://game-spot-by-gtk.vercel.app/",
     category: "Web App",
     color: "from-green-500 to-emerald-500",
-    image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=800",
+    image: "/gamespot.png",
     benefits: [
       "36+ mini-games across multiple categories",
       "Ad-free, tracker-free experience",
@@ -89,7 +89,7 @@ const projects: ProjectDetails[] = [
     demoLink: "https://code-craft-tool.vercel.app/",
     category: "Developer Tool",
     color: "from-amber-500 to-orange-500",
-    image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800",
+    image: "/HOME-1.png",
     benefits: [
       "Automatic language detection in mixed code",
       "Easy merge multiple files with proper sections",
@@ -107,7 +107,7 @@ const projects: ProjectDetails[] = [
     demoLink: "https://lifespan-estimator.vercel.app/",
     category: "Health Tech",
     color: "from-teal-500 to-green-500",
-    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800",
+    image: "/Lifespan-Estimator.png",
     benefits: [
       "Estimate based on personal data and lifestyle",
       "Understand health and environment influence",
@@ -125,7 +125,7 @@ const projects: ProjectDetails[] = [
     demoLink: "https://reel-revival.vercel.app/",
     category: "Entertainment",
     color: "from-red-500 to-pink-500",
-    image: "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=800",
+    image: "/Reel-Revival.png",
     benefits: [
       "Private theater screenings",
       "Classic movie selection",
@@ -143,7 +143,7 @@ const projects: ProjectDetails[] = [
     demoLink: "https://need2fix-v1.vercel.app/",
     category: "Marketplace",
     color: "from-indigo-500 to-purple-500",
-    image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800",
+    image: "/need2fix-home.png",
     benefits: [
       "Smart GPS-enabled location detection",
       "Verified and background-checked professionals",
@@ -161,7 +161,7 @@ const projects: ProjectDetails[] = [
     demoLink: "https://cine-launch-v1.vercel.app/",
     category: "Crowdfunding",
     color: "from-yellow-500 to-amber-500",
-    image: "https://images.unsplash.com/photo-1485846234645-a62644f84728?w=800",
+    image: "/cine-launch.png",
     benefits: [
       "Multiple funding options: crowdfunding, investors, grants",
       "High success rates with global community",

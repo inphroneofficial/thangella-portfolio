@@ -58,6 +58,26 @@ const AboutSection = () => {
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ delay: 0.3, duration: 0.6 }}
             >
+              {/* Profile Photo Card */}
+              <motion.div
+                initial={{ opacity: 0, y: -20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ delay: 0.2, duration: 0.6 }}
+                whileHover={{ scale: 1.05, rotateY: 5, rotateX: 5 }}
+                className="mx-auto mb-8 w-48 h-48 sm:w-56 sm:h-56 rounded-2xl overflow-hidden 
+                           border border-primary/30 shadow-xl backdrop-blur-md bg-white/5 
+                           flex items-center justify-center relative group"
+              >
+                <img
+                  src="/GTK.jpg"
+                  alt="Gadidamalla Thangella"
+                  className="w-full h-full object-cover rounded-2xl 
+                             group-hover:scale-105 transition-all duration-500"
+                />
+                {/* Glow Effect */}
+                <div className="absolute inset-0 rounded-2xl bg-primary/20 opacity-0 group-hover:opacity-20 transition-all duration-500" />
+              </motion.div>
+
               <div className="space-y-5">
                 <p className="text-base leading-relaxed text-muted-foreground sm:text-lg">
                   I'm a <span className="font-semibold text-foreground">Computer Science graduate</span> with 
@@ -76,7 +96,7 @@ const AboutSection = () => {
                 <div className="mt-8 grid grid-cols-2 gap-3">
                   {[
                     { icon: MapPin, label: "Location", value: "Hyderabad, India" },
-                    { icon: Calendar, label: "Experience", value: "Fresh Graduate" },
+                    { icon: Calendar, label: "Experience", value: "2024 Graduate" },
                     { icon: GraduationCap, label: "Education", value: "BSc (Hons) CS" },
                     { icon: Briefcase, label: "Status", value: "Open to Work", highlight: true },
                   ].map((item, index) => (
