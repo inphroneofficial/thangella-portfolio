@@ -133,7 +133,7 @@ const HeroSection = () => {
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Button variant="heroOutline" size="lg" asChild>
                 <a
-                  href="/Thangella_DevOps_Resume-2025.pdf"
+                  href="/THANGELLA_Promt Engineer_Resume.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -146,7 +146,7 @@ const HeroSection = () => {
             {/* Download CV */}
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Button variant="glass" size="lg" asChild>
-                <a href="/Thangella_DevOps_Resume-2025.pdf" download>
+                <a href="/THANGELLA_Promt Engineer_Resume.pdf" download>
                   Download CV
                   <Download className="h-4 w-4" />
                 </a>
