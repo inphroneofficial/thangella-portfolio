@@ -21,7 +21,7 @@ interface ResumeOption {
   role: string;
   icon: React.ElementType;
   color: string;
-  srcPath: string; // LOCAL PDF PATH
+  srcPath: string;
 }
 
 const resumeOptions: ResumeOption[] = [
@@ -31,7 +31,7 @@ const resumeOptions: ResumeOption[] = [
     role: "DevOps / Cloud / SRE",
     icon: Cloud,
     color: "from-blue-500 to-cyan-500",
-    srcPath:"/Thangella_AWS_DevOps_Resume.pdf",
+    srcPath: "/Thangella_AWS_DevOps_Resume.pdf",
   },
   {
     id: "data",
@@ -101,17 +101,18 @@ const ResumeSelector = ({ isOpen, onClose, mode }: ResumeSelectorProps) => {
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
+            transition={{ type: "spring", damping: 25, stiffness: 300 }}
           >
             {/* Header */}
-            <div className="flex items-center justify-between border-b border-border bg-secondary/50 px-4 py-4">
-              <div className="flex items-center gap-3">
+            <div className="flex items-center justify-between border-b border-border bg-secondary/50 px-4 sm:px-6 py-4">
+              <div className="flex items-center gap-2 sm:gap-4">
                 {selectedResume && (
-                  <Button variant="ghost" size="icon" onClick={handleBack}>
+                  <Button variant="ghost" size="icon" onClick={handleBack} className="h-8 w-8">
                     <ChevronLeft className="h-4 w-4" />
                   </Button>
                 )}
                 <div>
-                  <h3 className="font-semibold">
+                  <h3 className="text-base sm:text-lg font-semibold">
                     {mode === "download"
                       ? "Download Resume"
                       : selectedResume
@@ -128,15 +129,15 @@ const ResumeSelector = ({ isOpen, onClose, mode }: ResumeSelectorProps) => {
 
               <div className="flex items-center gap-2">
                 {selectedResume && (
-                  <div className="hidden sm:flex items-center gap-1 rounded-lg border p-1">
-                    <Button size="icon" variant="ghost" onClick={handleZoomOut}>
+                  <div className="hidden sm:flex items-center gap-1 rounded-lg border bg-background p-1">
+                    <Button variant="ghost" size="icon" className="h-8 w-8" onClick={handleZoomOut}>
                       <ZoomOut className="h-4 w-4" />
                     </Button>
-                    <span className="w-12 text-center text-sm">{zoom}%</span>
-                    <Button size="icon" variant="ghost" onClick={handleZoomIn}>
+                    <span className="w-12 text-center text-sm font-medium">{zoom}%</span>
+                    <Button variant="ghost" size="icon" className="h-8 w-8" onClick={handleZoomIn}>
                       <ZoomIn className="h-4 w-4" />
                     </Button>
-                    <Button size="icon" variant="ghost" onClick={handleResetZoom}>
+                    <Button variant="ghost" size="icon" className="h-8 w-8" onClick={handleResetZoom}>
                       <Maximize2 className="h-4 w-4" />
                     </Button>
                   </div>
@@ -149,13 +150,16 @@ const ResumeSelector = ({ isOpen, onClose, mode }: ResumeSelectorProps) => {
 
             {/* Content */}
             {!selectedResume ? (
-              <div className="flex-1 overflow-y-auto p-6">
-                <div className="max-w-2xl mx-auto grid gap-4">
-                  <div className="text-center">
+              <div className="flex-1 overflow-y-auto p-4 sm:p-6">
+                <div className="grid gap-3 sm:gap-4 w-full max-w-2xl mx-auto">
+                  <div className="text-center mb-2">
                     <FileText className="h-10 w-10 mx-auto text-primary mb-2" />
                     <h4 className="text-lg font-semibold">
                       {mode === "download" ? "Download Resume" : "View Resume"}
                     </h4>
+                    <p className="text-muted-foreground text-xs mt-1">
+                      Select a role-specific resume
+                    </p>
                   </div>
 
                   {resumeOptions.map((resume, index) => (
@@ -165,27 +169,25 @@ const ResumeSelector = ({ isOpen, onClose, mode }: ResumeSelectorProps) => {
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: index * 0.1 }}
                       onClick={() => handleSelect(resume)}
-                      className="relative overflow-hidden rounded-xl border p-4 text-left hover:shadow-lg"
+                      className="group relative overflow-hidden rounded-xl border border-border bg-card p-3 sm:p-4 text-left transition-all hover:border-primary/50 hover:shadow-lg"
                     >
-                      <div
-                        className={`absolute inset-0 bg-gradient-to-r ${resume.color} opacity-10`}
-                      />
+                      <div className={`absolute inset-0 bg-gradient-to-r ${resume.color} opacity-0 group-hover:opacity-10`} />
                       <div className="relative flex items-center gap-3">
-                        <div
-                          className={`h-12 w-12 rounded-xl flex items-center justify-center bg-gradient-to-r ${resume.color} text-white`}
-                        >
-                          <resume.icon className="h-6 w-6" />
+                        <div className={`flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-xl bg-gradient-to-r ${resume.color} text-white shadow-lg`}>
+                          <resume.icon className="h-5 w-5 sm:h-6 sm:w-6" />
                         </div>
-                        <div className="flex-1">
-                          <h5 className="font-semibold">{resume.title}</h5>
-                          <p className="text-xs text-muted-foreground">
+                        <div className="flex-1 min-w-0">
+                          <h5 className="font-semibold text-sm sm:text-base">
+                            {resume.title}
+                          </h5>
+                          <p className="text-muted-foreground text-xs truncate">
                             {resume.role}
                           </p>
                         </div>
                         {mode === "download" ? (
-                          <Download className="h-4 w-4" />
+                          <Download className="h-4 w-4 text-muted-foreground group-hover:text-primary" />
                         ) : (
-                          <ExternalLink className="h-4 w-4" />
+                          <ExternalLink className="h-4 w-4 text-muted-foreground group-hover:text-primary" />
                         )}
                       </div>
                     </motion.button>
@@ -193,17 +195,14 @@ const ResumeSelector = ({ isOpen, onClose, mode }: ResumeSelectorProps) => {
                 </div>
               </div>
             ) : (
-              <div className="flex-1 overflow-auto bg-muted/30 p-4">
+              <div className="flex-1 overflow-auto bg-muted/30 p-2 sm:p-4">
                 <div
-                  className="mx-auto transition-transform"
-                  style={{
-                    transform: `scale(${zoom / 100})`,
-                    transformOrigin: "top center",
-                  }}
+                  className="mx-auto transition-transform duration-300"
+                  style={{ transform: `scale(${zoom / 100})`, transformOrigin: "top center" }}
                 >
                   <iframe
                     src={selectedResume.srcPath}
-                    className="h-[800px] w-full max-w-3xl mx-auto rounded-lg border shadow-lg"
+                    className="h-[600px] sm:h-[800px] w-full max-w-3xl mx-auto rounded-lg border shadow-lg"
                     title={selectedResume.title}
                   />
                 </div>
