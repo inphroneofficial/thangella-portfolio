@@ -11,7 +11,8 @@ import ProjectsSection from "@/components/ProjectsSection";
 import ExperienceSection from "@/components/ExperienceSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
-import ResumeViewer from "@/components/ResumeViewer";
+import ResumeSelector from "@/components/ResumeSelector";
+import Chatbot from "@/components/Chatbot";
 
 // Page transition variants
 const pageVariants = {
@@ -54,6 +55,7 @@ const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isDark, setIsDark] = useState(true);
   const [isResumeOpen, setIsResumeOpen] = useState(false);
+  const [isDownloadOpen, setIsDownloadOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -120,7 +122,10 @@ const Index = () => {
             
             <main>
               <motion.div variants={sectionVariants}>
-                <HeroSection onOpenResume={() => setIsResumeOpen(true)} />
+                <HeroSection 
+                  onOpenResume={() => setIsResumeOpen(true)} 
+                  onDownloadResume={() => setIsDownloadOpen(true)}
+                />
               </motion.div>
               
               <motion.div
@@ -170,7 +175,9 @@ const Index = () => {
             </main>
             
             <Footer />
-            <ResumeViewer isOpen={isResumeOpen} onClose={() => setIsResumeOpen(false)} />
+            <ResumeSelector isOpen={isResumeOpen} onClose={() => setIsResumeOpen(false)} mode="view" />
+            <ResumeSelector isOpen={isDownloadOpen} onClose={() => setIsDownloadOpen(false)} mode="download" />
+            <Chatbot />
           </motion.div>
         )}
       </AnimatePresence>

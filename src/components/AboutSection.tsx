@@ -96,7 +96,7 @@ const AboutSection = () => {
                 <div className="mt-8 grid grid-cols-2 gap-3">
                   {[
                     { icon: MapPin, label: "Location", value: "Hyderabad, India" },
-                    { icon: Calendar, label: "Experience", value: "2024 Graduate" },
+                    { icon: Calendar, label: "Experience", value: "Fresh Graduate" },
                     { icon: GraduationCap, label: "Education", value: "BSc (Hons) CS" },
                     { icon: Briefcase, label: "Status", value: "Open to Work", highlight: true },
                   ].map((item, index) => (

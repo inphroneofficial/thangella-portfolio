@@ -61,7 +61,7 @@ const Footer = () => {
                 <span className="font-mono text-2xl font-bold">
                   <span className="text-primary"></span>Thangella
                 </span>
-                <p className="text-xs text-muted-foreground">DevOps | Cloud | AI</p>
+                <p className="text-xs text-muted-foreground">DevOps | Cloud | Data Analyst | AI</p>
               </div>
             </motion.a>
 

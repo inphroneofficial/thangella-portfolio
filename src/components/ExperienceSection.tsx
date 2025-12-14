@@ -6,9 +6,9 @@ import { GraduationCap, Award, BookOpen } from "lucide-react";
 const education = [
   {
     degree: "BSc (Hons) – Computer Science",
-    institution: "Backstage Pass Institute of Technology",
+    institution: "Backstage Pass Institute of Gaming",
     year: "2024",
-    duration: "4 Years",
+    duration: "",
     icon: GraduationCap,
   },
   {

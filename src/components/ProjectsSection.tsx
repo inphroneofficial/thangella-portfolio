@@ -6,7 +6,7 @@ import { Button } from "./ui/button";
 import ProjectModal, { ProjectDetails } from "./ProjectModal";
 
 const projects: ProjectDetails[] = [
-  {
+ {
     id: 1,
     title: "Rewind-It",
     description: "A private, offline-first memory journal for capturing and reliving meaningful moments.",
@@ -174,25 +174,63 @@ const projects: ProjectDetails[] = [
 
 const devOpsProjects = [
   {
-    title: "Automated CI/CD Pipeline",
-    description: "Fully automated CI/CD pipeline from GitHub to AWS EC2 with Blue/Green Deployment.",
-    tools: ["AWS", "Jenkins", "Terraform", "CodeDeploy"],
-    impact: "60% reduction in deployment effort",
+    title: "AWS CI/CD Pipeline - Blue/Green",
+    description: "Designed and automated AWS cloud infrastructure using Terraform with multistage CI/CD pipelines using Jenkins Pipeline-as-Code. Integrated AWS CodeDeploy with Blue/Green deployment for zero-downtime releases.",
+    tools: ["Terraform", "Jenkins", "Maven", "CodeDeploy", "EC2", "S3"],
+    impact: "2.5× faster deployments, 60% less manual work",
     color: "from-blue-500 to-cyan-500",
   },
   {
-    title: "3-Tier AWS Architecture",
-    description: "Designed 3-tier architecture with secure VPC, EC2, RDS, and ALB.",
-    tools: ["AWS VPC", "EC2", "RDS", "Ansible"],
-    impact: "Production-ready infrastructure",
+    title: "Kubernetes Cluster with Observability",
+    description: "Provisioned multi-node Kubernetes cluster on AWS using Kops with custom VPC networking. Set up Prometheus metrics and Grafana dashboards for real-time visualization and alerting.",
+    tools: ["Kops", "Docker", "Helm", "Prometheus", "Grafana"],
+    impact: "Real-time monitoring & optimized resources",
     color: "from-purple-500 to-pink-500",
   },
   {
-    title: "KPI Dashboard System",
-    description: "Interactive dashboards showing KPIs using SQL and Power BI.",
-    tools: ["Power BI", "Tableau", "SQL", "Excel"],
-    impact: "Data-driven decisions enabled",
-    color: "from-amber-500 to-orange-500",
+    title: "Infrastructure Automation - Terraform",
+    description: "Developed Terraform modules for EC2, VPC, subnets, RDS, IAM roles, S3, and ALB. Implemented remote state management and automated maintenance with Shell scripts and AWS CLI.",
+    tools: ["Terraform", "AWS CLI", "Git", "TFLint"],
+    impact: "Secure, version-controlled infrastructure",
+    color: "from-green-500 to-emerald-500",
+  },
+  {
+    title: "Containerization & Deployment",
+    description: "Containerized microservices with optimized Dockerfiles and multi-stage builds. Automated CI/CD integration with Kubernetes using Jenkins + Helm upgrade pipelines with rolling deployments.",
+    tools: ["Docker", "Kubernetes", "Jenkins", "Nexus", "NGINX"],
+    impact: "Reduced deployment errors with strict versioning",
+    color: "from-orange-500 to-amber-500",
+  },
+];
+
+const dataAnalyticsProjects = [
+  {
+    title: "E-Commerce Sales Analysis",
+    description: "Analyzed e-commerce dataset to identify top products, regional sales trends, and revenue contributions. Created interactive Tableau/Power BI dashboards for business insights.",
+    tools: ["SQL", "Python", "Pandas", "Tableau", "Power BI"],
+    impact: "20% of products generate 75% revenue",
+    color: "from-indigo-500 to-violet-500",
+  },
+  {
+    title: "Customer Churn Prediction",
+    description: "Built predictive model using logistic regression and decision trees to identify customers likely to churn. Performed feature engineering and model evaluation with accuracy, F1-score, AUC.",
+    tools: ["Python", "Pandas", "NumPy", "Scikit-learn"],
+    impact: "Data-driven retention strategies",
+    color: "from-rose-500 to-pink-500",
+  },
+  {
+    title: "Social Media Sentiment Analysis",
+    description: "Analyzed customer feedback from social media to determine positive, negative, or neutral sentiment trends using NLP. Visualized insights with Matplotlib/Seaborn.",
+    tools: ["Python", "NLTK", "TextBlob", "Matplotlib", "Seaborn"],
+    impact: "Product feedback insights for teams",
+    color: "from-teal-500 to-cyan-500",
+  },
+  {
+    title: "Financial Fraud Detection",
+    description: "Analyzed financial transactions to detect unusual patterns and potential fraud. Built dashboards for risk monitoring and anomaly detection based on transaction patterns.",
+    tools: ["SQL", "Python", "Pandas", "NumPy", "Excel", "Tableau"],
+    impact: "Risk monitoring & fraud prevention",
+    color: "from-red-500 to-orange-500",
   },
 ];
 
@@ -365,9 +403,9 @@ const ProjectsSection = () => {
             transition={{ delay: 0.8 }}
           >
             <h3 className="mb-8 text-xl font-semibold text-muted-foreground">
-              DevOps & Data Analytics Projects
+              AWS & DevOps Projects
             </h3>
-            <div className="grid gap-6 md:grid-cols-3">
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
               {devOpsProjects.map((project, index) => (
                 <motion.div
                   key={project.title}
@@ -378,8 +416,8 @@ const ProjectsSection = () => {
                   whileHover={{ scale: 1.03 }}
                 >
                   <div className={`mb-4 h-1 w-12 rounded-full bg-gradient-to-r ${project.color}`} />
-                  <h4 className="mb-2 text-base font-bold line-clamp-1">{project.title}</h4>
-                  <p className="mb-4 flex-1 text-sm text-muted-foreground line-clamp-2 min-h-[2.5rem]">
+                  <h4 className="mb-2 text-base font-bold line-clamp-2 min-h-[3rem]">{project.title}</h4>
+                  <p className="mb-4 flex-1 text-sm text-muted-foreground line-clamp-3 min-h-[4rem]">
                     {project.description}
                   </p>
                   
@@ -393,6 +431,64 @@ const ProjectsSection = () => {
                         {tool}
                       </span>
                     ))}
+                    {project.tools.length > 4 && (
+                      <span className="rounded-md bg-primary/10 px-2 py-0.5 text-xs text-primary">
+                        +{project.tools.length - 4}
+                      </span>
+                    )}
+                  </div>
+                  
+                  {/* Impact */}
+                  <div className="rounded-lg bg-primary/5 p-2.5">
+                    <span className="text-xs font-medium text-primary">Impact: </span>
+                    <span className="text-xs text-muted-foreground">{project.impact}</span>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Data Analytics Projects */}
+          <motion.div
+            className="mt-16"
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ delay: 1.0 }}
+          >
+            <h3 className="mb-8 text-xl font-semibold text-muted-foreground">
+              Data Analytics Projects
+            </h3>
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+              {dataAnalyticsProjects.map((project, index) => (
+                <motion.div
+                  key={project.title}
+                  className="group relative flex flex-col rounded-2xl border border-border bg-card/50 p-5 backdrop-blur-sm transition-all hover:border-primary/50"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ delay: 1.2 + index * 0.1 }}
+                  whileHover={{ scale: 1.03 }}
+                >
+                  <div className={`mb-4 h-1 w-12 rounded-full bg-gradient-to-r ${project.color}`} />
+                  <h4 className="mb-2 text-base font-bold line-clamp-2 min-h-[3rem]">{project.title}</h4>
+                  <p className="mb-4 flex-1 text-sm text-muted-foreground line-clamp-3 min-h-[4rem]">
+                    {project.description}
+                  </p>
+                  
+                  {/* Tools */}
+                  <div className="mb-4 flex flex-wrap gap-1.5">
+                    {project.tools.slice(0, 4).map((tool) => (
+                      <span
+                        key={tool}
+                        className="rounded-md bg-secondary px-2 py-0.5 text-xs text-muted-foreground"
+                      >
+                        {tool}
+                      </span>
+                    ))}
+                    {project.tools.length > 4 && (
+                      <span className="rounded-md bg-primary/10 px-2 py-0.5 text-xs text-primary">
+                        +{project.tools.length - 4}
+                      </span>
+                    )}
                   </div>
                   
                   {/* Impact */}
